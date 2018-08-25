@@ -1,8 +1,11 @@
 .DS_Store
 
-// Concatenated js
+# Concatenated js
 concat.js
 deployment/style.css
+
+# Copied readme
+deployment/README.md
 
 # Logs
 logs

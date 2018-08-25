@@ -1,3 +1,3 @@
-# Empty P5.js Project
-A basic P5.js project setup for use as foundation. Features gulp, livereload and js-concatenation. <br>
-By John Petersson
+# Pulse
+
+A light pulse, inspired by the scenography of the dance piece In the Distance, Troy by Magnus Myhr.

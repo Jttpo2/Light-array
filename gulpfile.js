@@ -16,11 +16,13 @@ gulp.task('watch', function() {
 
 gulp.task('reload', function() {
 	livereload.reload();
-}); 
+});
 
 var sketchFolder = "sketch/";
 var sketchFiles = [
-'emptyp5project.js'
+'pulse.js',
+'light.js',
+'lighthandler.js'
 ];
 
 sketchFiles.forEach(function(fileName, index) {

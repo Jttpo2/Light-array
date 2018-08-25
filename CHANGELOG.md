@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [0.4.0] - 2018-08-25
+### Added
+- Light sources.
+- Brain.
+- Pulse movement.
+- Fading.
+- Colors.
+
 ## [0.3.0] - 2017-05-10
 ### Added
 - Copying style.css into deployment folder

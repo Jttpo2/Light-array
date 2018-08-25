@@ -1,20 +1,27 @@
 new p5();
 
+// let fr = 60;
 let backgroundColor;
 
+let lightHandler;
+
 function setup() {
+	// frameRate(fr);
+
 	let canvas = createCanvas(
 		window.innerWidth,
 		window.innerHeight
 		);
 
-	backgroundColor = color(200);
+	backgroundColor = color(0);
+
+	lightHandler = new LightHandler(10);
 }
 
 function draw() {
 	background(backgroundColor);
-	
-	drawTestSquare();
+
+	lightHandler.run();
 }
 
 function windowResized() {
@@ -22,10 +29,3 @@ function windowResized() {
 		window.innerWidth,
 		window.innerHeight);
 }
-
-function drawTestSquare() {
-	fill(100); 
-	rectMode(CENTER);
-	rect(width/2, height/2, 50, 50);
-}
-
