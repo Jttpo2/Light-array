@@ -27,7 +27,7 @@ class LightHandler {
     this.isActive = true;
     this.currentLightIndex = 0;
 
-    this.fadeTime = 1000;
+    this.fadeTime = 370;
     this.dimAmount = 2.1;
   }
 
@@ -49,7 +49,6 @@ class LightHandler {
         this.lastChange = millis();
       }
     }
-
 
     this.lights.forEach(function(light) {
       light.update();

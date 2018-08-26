@@ -42,8 +42,6 @@ class Light {
       fill(this.lightColor);
       noStroke();
       ellipse(this.posX, this.posY, this.size * this.sizeRatio, this.size * this.sizeRatio);
-    } else {
-      // Do nothing
     }
   }
 
@@ -59,6 +57,7 @@ class Light {
   // Fade to black over a given time (in millis)
   fade(time) {
     this.fadeStartTime = millis();
+    this.brightnessMax = brightness(this.lightColor);
     this.fadeEndTime = this.fadeStartTime + time;
     this.isFading = true;
   }
@@ -68,7 +67,13 @@ class Light {
       this.isFading = false;
       return;
     }
-    let brightnessAfterFade = map(millis(), this.fadeStartTime, this.fadeEndTime, this.brightnessMin, this.brightnessMax);
+    let brightnessAfterFade = map(
+      millis(),
+      this.fadeStartTime,
+      this.fadeEndTime,
+      this.brightnessMax,
+      this.brightnessMin
+    );
     this._setBrightness(brightnessAfterFade);
   }
 
@@ -79,7 +84,7 @@ class Light {
       saturation(this.lightColor),
       value
     );
-    if (brightness(this.lightColor) <= 10) {
+    if (brightness(this.lightColor) <= this.brightnessMin) {
       this.turnOff();
     }
   }
