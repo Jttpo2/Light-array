@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 ### Added
 - Lights handle their own fading.
+- Light coordination separated into programs, e.g. Pulse, Reverse Pulse.
 
 ## [0.4.0] - 2018-08-25
 ### Added
