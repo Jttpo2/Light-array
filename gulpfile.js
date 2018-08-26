@@ -20,9 +20,11 @@ gulp.task('reload', function() {
 
 var sketchFolder = "sketch/";
 var sketchFiles = [
-'pulse.js',
+'lightarray.js',
 'light.js',
-'lighthandler.js'
+'lighthandler.js',
+'program.js',
+'pulse.js'
 ];
 
 sketchFiles.forEach(function(fileName, index) {
