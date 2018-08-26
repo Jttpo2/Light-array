@@ -74,4 +74,22 @@ class LightMatrix {
     });
   }
 
+  lightUpCol(col, color) {
+    this.lights.forEach(function(row) {
+      row[col].turnOn(color);
+    });
+  }
+
+  turnOffCol(col) {
+    this.lights.forEach(function(row) {
+      row[col].turnOff(color);
+    });
+  }
+
+  fadeCol(col, fadeTime) {
+    this.lights.forEach(function(row) {
+      row[col].fade(fadeTime);
+    });
+  }
+
 }

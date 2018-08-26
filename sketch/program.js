@@ -28,6 +28,17 @@ class Program {
     this.lights.fadeRow(index, fadeTime)
   }
 
+  _lightUpCol(index, color) {
+    this.lights.lightUpCol(index, color)
+  }
+
+  _turnOffCol(index) {
+    this.lights.turnOffCol(index);
+  }
+
+  _fadeCol(index, fadeTime) {
+    this.lights.fadeCol(index, fadeTime)  }
+
   _isTimeForUpdate() {
     return (millis() - this.lastChange) > this.interval;
   }
