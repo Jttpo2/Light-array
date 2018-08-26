@@ -10,7 +10,7 @@ class LightHandler {
 
     this.programs = [];
     this.programs.push(new ReversePulse(this.lights, this.defaultInterval, true));
-    this.programs.push(new Pulse(this.lights,this.defaultInterval, false, false));
+    // this.programs.push(new Pulse(this.lights,this.defaultInterval, false, false));
     this._activateAllPrograms();
   }
 
