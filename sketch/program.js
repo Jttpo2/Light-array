@@ -39,28 +39,28 @@ class Program {
   _fadeCol(index, fadeTime) {
     this.lights.fadeCol(index, fadeTime)  }
 
-  _isTimeForUpdate() {
-    return (millis() - this.lastChange) > this.interval;
+    _isTimeForUpdate() {
+      return (millis() - this.lastChange) > this.interval;
+    }
+
+    start() {
+      this.isActive = true;
+    }
+
+    stop() {
+      this.isActive = false;
+    }
+
+    // _dimAll() {
+    //   this.lights.forEach(function(light) {
+    //     light.dim(this.dimAmount);
+    //   }, this);
+    // }
+    //
+    // _turnOffAll() {
+    //   this.lights.forEach(function(light) {
+    //     light.turnOff();
+    //   });
+    // }
+
   }
-
-  start() {
-    this.isActive = true;
-  }
-
-  stop() {
-    this.isActive = false;
-  }
-
-  // _dimAll() {
-  //   this.lights.forEach(function(light) {
-  //     light.dim(this.dimAmount);
-  //   }, this);
-  // }
-  //
-  // _turnOffAll() {
-  //   this.lights.forEach(function(light) {
-  //     light.turnOff();
-  //   });
-  // }
-
-}

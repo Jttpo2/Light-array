@@ -1,10 +1,17 @@
 class Pulse extends Program {
-  constructor(lightMatrix, interval, columnDirection) {
+  constructor(lightMatrix, interval, isForwardDirection, isColumnDirection) {
     super(lightMatrix, interval);
 
-    this.currentIndex = 0;
+    if (isColumnDirection) {
+      this.currentIndex = isForwardDirection ? 0 : lightMatrix.cols -1;
+    } else {
+      this.currentIndex = isForwardDirection ? 0 : lightMatrix.rows -1;
+    }
+
     this.fadeTime = 370;
-    this.pulseAsColumn = columnDirection;
+
+    this.isForwardDirection = isForwardDirection;
+    this.pulseAsColumn = isColumnDirection;
   }
 
   update() {
@@ -15,7 +22,11 @@ class Pulse extends Program {
 
       if (this._isTimeForUpdate()) {
         this._fadeCurrent();
-        this._next();
+        if (this.isForwardDirection) {
+          this._next();
+        } else {
+          this._previous();
+        }
         this._lightUpCurrent();
         this.lastChange = millis();
       }

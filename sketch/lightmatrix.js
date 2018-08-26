@@ -58,19 +58,19 @@ class LightMatrix {
 
   lightUpRow(row, color) {
     this.lights[row].forEach(function(light) {
-        light.turnOn(color);
+      light.turnOn(color);
     });
   }
 
   turnOffRow(row) {
     this.lights[row].forEach(function(light) {
-        light.turnOff();
+      light.turnOff();
     });
   }
 
   fadeRow(row, fadeTime) {
     this.lights[row].forEach(function(light) {
-        light.fade(fadeTime);
+      light.fade(fadeTime);
     });
   }
 
