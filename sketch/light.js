@@ -35,13 +35,22 @@ class Light {
     rectMode(CENTER);
     fill(this.baseColor);
     noStroke();
-    rect(this.posX, this.posY, this.size, this.size, this.cornerRadius);
+    rect(
+      this.posX,
+      this.posY,
+      this.size,
+      this.size,
+      this.cornerRadius);
 
     if (this.isOn) {
       ellipseMode(CENTER);
       fill(this.lightColor);
       noStroke();
-      ellipse(this.posX, this.posY, this.size * this.sizeRatio, this.size * this.sizeRatio);
+      ellipse(
+        this.posX,
+        this.posY,
+        this.size * this.sizeRatio,
+        this.size * this.sizeRatio);
     }
   }
 

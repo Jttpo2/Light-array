@@ -1,8 +1,8 @@
-class Pulse extends Program {
+class ReversePulse extends Program {
   constructor(lightArray) {
     super(lightArray);
 
-    this.currentLightIndex = 0;
+    this.currentLightIndex = lightArray.length -1;
 
     this.fadeTime = 370;
   }
@@ -15,11 +15,10 @@ class Pulse extends Program {
 
       if (this.isTimeForUpdate()) {
         this.fadeCurrent();
-        this.next();
+        this.previous();
         this.lightUpCurrent();
         this.lastChange = millis();
       }
     }
   }
-
 }

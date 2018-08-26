@@ -1,13 +1,36 @@
 class LightHandler {
   constructor(noOfLights) {
-    this.lights = [];
-
     // this.lightSize = 45;
     this.lightSize = width / (noOfLights +2);
-
-    this.defaultLightColor = color(200, 140, 5);
-
     this.margin = this.lightSize * 1;
+
+    this.lights = this._initLights(noOfLights);
+
+    this.programs = [];
+    this.programs.push(new ReversePulse(this.lights));
+    this.programs.push(new Pulse(this.lights));
+  }
+
+  run() {
+    this.update();
+    this.display();
+  }
+
+  update() {
+    this.programs.forEach(function(program) {
+      program.update();
+    });
+  }
+
+  display() {
+    this.lights.forEach(function(light) {
+      light.display();
+    });
+  }
+
+  _initLights(noOfLights) {
+    let lights = [];
+
     this.xStart = this.margin;
     this.xEnd = width - this.margin; // rectMode(CENTER)
     this.yStart = height/2;
@@ -18,89 +41,10 @@ class LightHandler {
         let x = this.xStart + intervalX * l;
         let y = this.yStart + intervalY * l;
         let light = new Light(x, y, this.lightSize);
-        this.lights.push(light);
+        lights.push(light);
     }
 
-    this.interval = 120;
-    this.lastChange = millis();
-
-    this.isActive = true;
-    this.currentLightIndex = 0;
-
-    this.fadeTime = 370;
-    this.dimAmount = 2.1;
+    return lights;
   }
 
-  run() {
-    this.update();
-    this.display();
-  }
-
-  update() {
-    if (this.isActive) {
-      this.lightUpCurrent();
-      // this.dimAll();
-
-      if (this.isTimeForUpdate()) {
-        // this.turnOffCurrrent();
-        this.fadeCurrent();
-        this.next();
-        this.lightUpCurrent();
-        this.lastChange = millis();
-      }
-    }
-
-    this.lights.forEach(function(light) {
-      light.update();
-    });
-  }
-
-  display() {
-    this.lights.forEach(function(light) {
-      light.display();
-    });
-  }
-
-  startPulse() {
-
-  }
-
-  stopPulse() {
-
-  }
-
-  lightUpCurrent() {
-    this.lights[this.currentLightIndex].turnOn(this.defaultLightColor);
-  }
-
-  turnOffCurrrent() {
-    this.lights[this.currentLightIndex].turnOff();
-  }
-
-  fadeCurrent() {
-    this.lights[this.currentLightIndex].fade(this.fadeTime);
-  }
-
-  dimAll() {
-    this.lights.forEach(function(light) {
-      light.dim(this.dimAmount);
-    }, this);
-  }
-
-  turnOffAll() {
-    this.lights.forEach(function(light) {
-      light.turnOff();
-    });
-  }
-
-  next() {
-    this.currentLightIndex++;
-    if (this.currentLightIndex >= this.lights.length) {
-      this.currentLightIndex = 0;
-    }
-  }
-
-  isTimeForUpdate() {
-    return (millis() - this.lastChange) > this.interval;
-  }
 }
