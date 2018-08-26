@@ -27,6 +27,7 @@ class LightHandler {
     this.isActive = true;
     this.currentLightIndex = 0;
 
+    this.fadeTime = 370;
     this.dimAmount = 2.1;
   }
 
@@ -38,16 +39,16 @@ class LightHandler {
   update() {
     if (this.isActive) {
       this.lightUpCurrent();
-      this.dimAll();
+      // this.dimAll();
 
       if (this.isTimeForUpdate()) {
         // this.turnOffCurrrent();
+        this.fadeCurrent();
         this.next();
         this.lightUpCurrent();
         this.lastChange = millis();
       }
     }
-
 
     this.lights.forEach(function(light) {
       light.update();
@@ -74,6 +75,10 @@ class LightHandler {
 
   turnOffCurrrent() {
     this.lights[this.currentLightIndex].turnOff();
+  }
+
+  fadeCurrent() {
+    this.lights[this.currentLightIndex].fade(this.fadeTime);
   }
 
   dimAll() {

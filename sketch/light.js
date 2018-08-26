@@ -10,6 +10,12 @@ class Light {
 
     this.sizeRatio = 8.5/10;
     this.cornerRadius = 6;
+
+    this.isFading = false;
+    this.fadeStartTime = 0;
+    this.fadeEndTime = 0;
+    this.brightnessMin = 10;
+    this.brightnessMax = 100;
   }
 
   run() {
@@ -18,7 +24,9 @@ class Light {
   }
 
   update() {
-
+    if (this.isFading) {
+      this._executeFade();
+    }
   }
 
   display() {
@@ -34,8 +42,6 @@ class Light {
       fill(this.lightColor);
       noStroke();
       ellipse(this.posX, this.posY, this.size * this.sizeRatio, this.size * this.sizeRatio);
-    } else {
-
     }
   }
 
@@ -48,16 +54,46 @@ class Light {
     this.isOn = false;
   }
 
-  dim(amount) {
+  // Fade to black over a given time (in millis)
+  fade(time) {
+    this.fadeStartTime = millis();
+    this.brightnessMax = brightness(this.lightColor);
+    this.fadeEndTime = this.fadeStartTime + time;
+    this.isFading = true;
+  }
+
+  _executeFade() {
+    if (brightness(this.lightColor) < this.brightnessMin) {
+      this.isFading = false;
+      return;
+    }
+    let brightnessAfterFade = map(
+      millis(),
+      this.fadeStartTime,
+      this.fadeEndTime,
+      this.brightnessMax,
+      this.brightnessMin
+    );
+    this._setBrightness(brightnessAfterFade);
+  }
+
+  _setBrightness(value) {
     colorMode(HSB);
     this.lightColor = color(
       hue(this.lightColor),
       saturation(this.lightColor),
-      brightness(this.lightColor) - amount
+      value
     );
-    if (brightness(this.lightColor) <= 10) {
+    if (brightness(this.lightColor) <= this.brightnessMin) {
       this.turnOff();
     }
+  }
+
+  // Dim instantly by brightness amount
+  dim(amount) {
+    this._setBrightness(
+      brightness(this.lightColor) - amount
+    );
   }
 
 }
