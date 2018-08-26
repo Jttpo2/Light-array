@@ -25,7 +25,8 @@ var sketchFiles = [
 'lighthandler.js',
 'program.js',
 'pulse.js',
-'reversepulse.js'
+'reversepulse.js',
+'lightmatrix.js'
 ];
 
 sketchFiles.forEach(function(fileName, index) {

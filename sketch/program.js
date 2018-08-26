@@ -1,8 +1,8 @@
 class Program {
-  constructor(lightArray, interval) {
+  constructor(lightMatrix, interval) {
     this.defaultLightColor = color(200, 140, 5);
 
-    this.lights = lightArray;
+    this.lights = lightMatrix;
 
     this.isActive = false;
 
@@ -13,35 +13,19 @@ class Program {
   }
 
   update() {
-    this.lights.forEach(function(light) {
-      light.update();
-    });
+
   }
 
-  _lightUpCurrent() {
-    this.lights[this.currentLightIndex].turnOn(this.defaultLightColor);
+  _lightUpRow(index, color) {
+    this.lights.lightUpRow(index, color)
   }
 
-  _turnOffCurrrent() {
-    this.lights[this.currentLightIndex].turnOff();
+  _turnOffRow(index) {
+    this.lights.turnOffRow(index);
   }
 
-  _fadeCurrent() {
-    this.lights[this.currentLightIndex].fade(this.fadeTime);
-  }
-
-  _next() {
-    this.currentLightIndex++;
-    if (this.currentLightIndex >= this.lights.length) {
-      this.currentLightIndex = 0;
-    }
-  }
-
-  _previous() {
-    this.currentLightIndex--;
-    if (this.currentLightIndex < 0) {
-      this.currentLightIndex = this.lights.length -1;
-    }
+  _fadeRow(index, fadeTime) {
+    this.lights.fadeRow(index, fadeTime)
   }
 
   _isTimeForUpdate() {
@@ -56,16 +40,16 @@ class Program {
     this.isActive = false;
   }
 
-  _dimAll() {
-    this.lights.forEach(function(light) {
-      light.dim(this.dimAmount);
-    }, this);
-  }
-
-  _turnOffAll() {
-    this.lights.forEach(function(light) {
-      light.turnOff();
-    });
-  }
+  // _dimAll() {
+  //   this.lights.forEach(function(light) {
+  //     light.dim(this.dimAmount);
+  //   }, this);
+  // }
+  //
+  // _turnOffAll() {
+  //   this.lights.forEach(function(light) {
+  //     light.turnOff();
+  //   });
+  // }
 
 }
