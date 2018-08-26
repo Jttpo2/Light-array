@@ -20,7 +20,7 @@ gulp.task('reload', function() {
 
 var sketchFolder = "sketch/";
 var sketchFiles = [
-'lightarray.js',
+'lights.js',
 'light.js',
 'lighthandler.js',
 'program.js',
