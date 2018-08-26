@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 - Lights handle their own fading.
 - Light coordination separated into programs, e.g. Pulse, Reverse Pulse.
+- Lights organised as matrix instead of array.
+- Matrix pulse both horizontal and vertical.
+
+### Changed
+- Project name: Light Array -> Lights. To accommodate matrix configuration.
 
 ## [0.4.0] - 2018-08-25
 ### Added
