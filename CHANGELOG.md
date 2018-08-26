@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
+
+## [0.5.0] - 2018-08-26
 ### Added
 - Lights handle their own fading.
 - Light coordination separated into programs, e.g. Pulse, Reverse Pulse.
