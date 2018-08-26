@@ -11,12 +11,12 @@ class ReversePulse extends Program {
     super.update();
 
     if (this.isActive) {
-      this.lightUpCurrent();
+      this._lightUpCurrent();
 
-      if (this.isTimeForUpdate()) {
-        this.fadeCurrent();
-        this.previous();
-        this.lightUpCurrent();
+      if (this._isTimeForUpdate()) {
+        this._fadeCurrent();
+        this._previous();
+        this._lightUpCurrent();
         this.lastChange = millis();
       }
     }

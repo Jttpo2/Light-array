@@ -11,12 +11,12 @@ class Pulse extends Program {
     super.update();
 
     if (this.isActive) {
-      this.lightUpCurrent();
+      this._lightUpCurrent();
 
-      if (this.isTimeForUpdate()) {
-        this.fadeCurrent();
-        this.next();
-        this.lightUpCurrent();
+      if (this._isTimeForUpdate()) {
+        this._fadeCurrent();
+        this._next();
+        this._lightUpCurrent();
         this.lastChange = millis();
       }
     }

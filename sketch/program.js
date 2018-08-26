@@ -18,33 +18,33 @@ class Program {
     });
   }
 
-  lightUpCurrent() {
+  _lightUpCurrent() {
     this.lights[this.currentLightIndex].turnOn(this.defaultLightColor);
   }
 
-  turnOffCurrrent() {
+  _turnOffCurrrent() {
     this.lights[this.currentLightIndex].turnOff();
   }
 
-  fadeCurrent() {
+  _fadeCurrent() {
     this.lights[this.currentLightIndex].fade(this.fadeTime);
   }
 
-  next() {
+  _next() {
     this.currentLightIndex++;
     if (this.currentLightIndex >= this.lights.length) {
       this.currentLightIndex = 0;
     }
   }
 
-  previous() {
+  _previous() {
     this.currentLightIndex--;
     if (this.currentLightIndex < 0) {
       this.currentLightIndex = this.lights.length -1;
     }
   }
 
-  isTimeForUpdate() {
+  _isTimeForUpdate() {
     return (millis() - this.lastChange) > this.interval;
   }
 
@@ -56,13 +56,13 @@ class Program {
 
   }
 
-  dimAll() {
+  _dimAll() {
     this.lights.forEach(function(light) {
       light.dim(this.dimAmount);
     }, this);
   }
 
-  turnOffAll() {
+  _turnOffAll() {
     this.lights.forEach(function(light) {
       light.turnOff();
     });
