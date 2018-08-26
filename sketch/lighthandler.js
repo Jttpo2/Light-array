@@ -6,9 +6,12 @@ class LightHandler {
 
     this.lights = this._initLights(noOfLights);
 
+    this.defaultInterval = 150;
+
     this.programs = [];
-    this.programs.push(new ReversePulse(this.lights));
-    this.programs.push(new Pulse(this.lights));
+    this.programs.push(new ReversePulse(this.lights, this.defaultInterval));
+    this.programs.push(new Pulse(this.lights, this.defaultInterval));
+    this._activateAllPrograms();
   }
 
   run() {
@@ -45,6 +48,12 @@ class LightHandler {
     }
 
     return lights;
+  }
+
+  _activateAllPrograms() {
+    this.programs.forEach(function(p) {
+      p.start();
+    })
   }
 
 }

@@ -1,12 +1,12 @@
 class Program {
-  constructor(lightArray) {
+  constructor(lightArray, interval) {
     this.defaultLightColor = color(200, 140, 5);
 
     this.lights = lightArray;
 
-    this.isActive = true;
+    this.isActive = false;
 
-    this.interval = 150;
+    this.interval = interval;
     this.lastChange = millis();
 
     this.dimAmount = 2.1;
@@ -48,12 +48,12 @@ class Program {
     return (millis() - this.lastChange) > this.interval;
   }
 
-  startPulse() {
-
+  start() {
+    this.isActive = true;
   }
 
-  stopPulse() {
-
+  stop() {
+    this.isActive = false;
   }
 
   _dimAll() {

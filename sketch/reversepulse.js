@@ -1,6 +1,6 @@
 class ReversePulse extends Program {
-  constructor(lightArray) {
-    super(lightArray);
+  constructor(lightArray, interval) {
+    super(lightArray, interval);
 
     this.currentLightIndex = lightArray.length -1;
 
